@@ -281,11 +281,11 @@ var View_Model = function() {
 	self.reset_editor();
 
 	window.onbeforeunload = null;
-	self.editor.on('change', function() {
-		if (window.onbeforeunload == null) {
-			window.onbeforeunload = function() { return "You have made changes in your editor."; };
-		}
-	});
+	//self.editor.on('change', function() {
+	//	if (window.onbeforeunload == null) {
+	//		window.onbeforeunload = function() { return "You have made changes in your editor."; };
+	//	}
+	//});
 
 	$(window).resize(function() { self.resize_window($(this).width(), $(this).height()); }).resize();
 	$('#php_search').search({language: 'en', limit: 30});
@@ -388,6 +388,19 @@ $(function() {
 	});
 
 	$('#title_bar .drop, #title_bar button').click(function() { setTimeout(function() {vm.editor.focus();}, 50); });
+
+    //vim support
+    //var editor = CodeMirror.fromTextArea(document.getElementById("code_div"), {
+    //    lineNumbers: true,
+    //    mode: "text/x-csrc",
+    //    keyMap: "vim",
+    //    matchBrackets: true,
+    //    showCursorWhenSelecting: true,
+    //    styleActiveLine: true,
+    //    theme: 'material',
+    //    lineWrapping: true,
+    //});
+    //console.log(editor)
 });
 
 //http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color
@@ -417,3 +430,5 @@ $.cssHooks.backgroundColor = {
         }
     }
 }
+
+

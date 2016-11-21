@@ -68,17 +68,23 @@ else {
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Run PHP Code</title>
+		<title>在线运行PHP</title>
 		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script type="text/javascript" src="js/ace/ace.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/knockout-3.4.0.js"></script>
 		<script type="text/javascript" src="js/php_search.js"></script>
+        <!--        vim support-->
+<!--        <link rel="stylesheet" href="http://cdn.atool.org/res/lib/CodeMirror/lib/codemirror.css">-->
+<!--        <script src="http://cdn.atool.org/res/lib/CodeMirror/lib/codemirror.js"></script>-->
+<!--        <script src="http://cdn.atool.org/res/lib/CodeMirror/keymap/vim.js"></script>-->
+
 		<script type="text/javascript" src="js/run_php_code.js"></script>
 
 		<link rel="shortcut icon" href="favicon.ico" >
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/run_php_code.css">
+
 	</head>
 	<body>		
 		
@@ -87,22 +93,22 @@ else {
 		</form>
 
 		<div id="title_bar">
-			<div id="title">Run PHP Code</div>
+			<div id="title">运行 PHP 代码</div>
 				
-			<div class="drop"><span>File</span>
+			<div class="drop"><span>文件</span>
 				<div>
 					<div class="clickable"><a data-bind="click: php_info">phpinfo()</a></div>
-					<div class="clickable"><a data-bind="click: remote_import">Remote Import...</a></div>
-					<div class="clickable"><a data-bind="click: download_file">Download...</a></div>
+<!--					<div class="clickable"><a data-bind="click: remote_import">Remote Import...</a></div>-->
+					<div class="clickable"><a data-bind="click: download_file">下载...</a></div>
 				</div>
 			</div
-			><div class="drop"><span>Options</span>
+			><div class="drop"><span>选项</span>
 				<div>
 					<div class="checkbox" data-bind="my_checkbox: settings.colorize, click: change_setting" data-label="Colorize"></div>
 					<div class="checkbox" data-bind="my_checkbox: settings.run_external, click: change_setting" data-label="External Window"></div>
 					<div class="checkbox" data-bind="my_checkbox: settings.pre_wrap, click: change_setting" data-label="&lt;pre&gt; Wrap"></div>
 					<div class="subdrop">
-						Error Reporting
+					    错误报告
 						<div>
 							<div class="radio" data-bind="my_radio: settings.error_reporting" data-value="none" data-label="None"></div>
 							<div class="radio" data-bind="my_radio: settings.error_reporting" data-value="fatal" data-label="Fatal"></div>
@@ -114,10 +120,10 @@ else {
 					</div>
 				</div>
 			</div
-			><div class="drop"><span>Themes</span>
+			><div class="drop"><span>主题</span>
 				<div>
 					<div class="subdrop">
-						Light
+                        浅色
 						<div>
 							<!-- ko foreach: themes.light -->
 								<div class="checkbox" data-bind="attr: { 'data-value': theme, 'data-label': title }, my_radio: $parent.settings.theme, click: $parent.change_setting"></div>	
@@ -125,7 +131,7 @@ else {
 						</div>
 					</div>
 					<div class="subdrop">
-						Dark
+					    深色
 						<div>
 							<!-- ko foreach: themes.dark -->
 								<div class="checkbox" data-bind="attr: { 'data-value': theme, 'data-label': title }, my_radio: $parent.settings.theme, click: $parent.change_setting"></div>	
@@ -138,14 +144,14 @@ else {
 				<span><i class="fa fa-question"></i></span>
 				<div id="help_window">
 					<div style="padding: 10px;">
-						<h2>Run PHP Code</h2>
+						<h2>在线运行PHP</h2>
 
 						<p>
 							<img src="img/website_duck.png" alt="" style="width: 40px; height: 40px;"><br>
 							&copy; Website Duck LLC<br />
 						</p>
 
-						<a class="button" href="https://github.com/websiteduck/Run-PHP-Code"><i class="fa fa-github"></i> GitHub Repo</a><br>
+						<a class="button" href="https://github.com/KowloonZh/Run-PHP-Code"><i class="fa fa-github"></i> GitHub Repo</a><br>
 					</div>
 
 					<div class="subdrop with_icon" style="text-align: left;">
@@ -174,8 +180,8 @@ else {
 			</div>
 					
 			<div id="button_container">
-				<button class="button" type="button" data-bind="click: clear"><i class="fa fa-eraser"></i> &nbsp; Clear</button>
-				<button class="button" type="button" title="Run (Ctrl+Enter)" data-bind="click: run">Run &nbsp; <i class="fa fa-play"></i></button>
+				<button class="button" type="button" data-bind="click: clear"><i class="fa fa-eraser"></i> &nbsp; 清空</button>
+				<button class="button" type="button" title="Run (Ctrl+Enter)" data-bind="click: run">运行&nbsp; <i class="fa fa-play"></i></button>
 			</div>
 
 			<div style="position: relative; display: inline-block; margin-left: 10px;">
