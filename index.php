@@ -10,11 +10,27 @@
  */
  
 //This application is meant to be run locally and should not be made publicly accessible.
-if (!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) die();
+//if (!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) die();
 
 define('NL', PHP_EOL);
 function u(&$v, $default = null) { return isset($v) ? $v : $default; }
 function ua($array, $key, $default = null) { return isset($array[$key]) ? $array[$key] : $default; }
+function p($target,$bool=true){
+    static $iii = 0;                                                                      
+    if ($iii == 0) {
+		header('content-type:text/html;charset=utf-8');
+	} 	
+
+    echo '<pre>';
+	$result = highlight_string("<?php\n" . var_export($target, true), true);
+	echo preg_replace('/&lt;\\?php<br \\/>/', '', $result, 1);
+			    
+    $iii++;
+    if ($bool) {
+		exit;
+   	}
+}
+
 
 if (isset($_POST['runphp_data'])) {
 	$runphp = json_decode($_POST['runphp_data']);
