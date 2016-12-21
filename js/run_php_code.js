@@ -189,7 +189,7 @@ var View_Model = function() {
 	};
 
 	self.reset_editor = function() {
-        if(self.settings.eof_str){
+        if(self.settings.eof_str()){
             self.editor.setValue("<?php\n\n$str = <<<EOF\n\nEOF;");
             self.editor.gotoLine(4);
         }else{
