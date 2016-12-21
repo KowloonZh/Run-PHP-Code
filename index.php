@@ -30,6 +30,11 @@ function p($target,$bool=true){
 		exit;
    	}
 }
+//将换行分隔的字符串,用$quote引起来,再用split分隔
+function s($str,$split=',',$quote="'"){
+    $arr = preg_split('/\s*[,\s]\s*/', trim($str), -1, PREG_SPLIT_NO_EMPTY);
+    return $quote.implode($quote.$split.$quote,$arr).$quote;
+}
 
 
 if (isset($_POST['runphp_data'])) {
