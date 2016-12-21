@@ -57,6 +57,7 @@ var View_Model = function() {
 	self.settings.colorize = ko.observable(true);
 	self.settings.theme = ko.observable('twilight');
 	self.settings.pre_wrap = ko.observable(false);
+    self.settings.eof_str = ko.observable(false);
 	self.settings.error_reporting = ko.observable('fatal');
 
 	self.themes = themes;
@@ -188,8 +189,13 @@ var View_Model = function() {
 	};
 
 	self.reset_editor = function() {
-		self.editor.setValue("<?php\n\n");
-		self.editor.gotoLine(3);
+        if(self.settings.eof_str){
+            self.editor.setValue("<?php\n\n$str = <<<EOF\n\nEOF;");
+            self.editor.gotoLine(4);
+        }else{
+            self.editor.setValue("<?php\n\n");
+            self.editor.gotoLine(3);
+        }
 		self.editor.focus();
 		window.onbeforeunload = null;
 	};

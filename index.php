@@ -128,6 +128,7 @@ else {
 					<div class="checkbox" data-bind="my_checkbox: settings.colorize, click: change_setting" data-label="Colorize"></div>
 					<div class="checkbox" data-bind="my_checkbox: settings.run_external, click: change_setting" data-label="External Window"></div>
 					<div class="checkbox" data-bind="my_checkbox: settings.pre_wrap, click: change_setting" data-label="&lt;pre&gt; Wrap"></div>
+                    <div class="checkbox" data-bind="my_checkbox: settings.eof_str, click: change_setting" data-label="EOF Str"></div>
 					<div class="subdrop">
 					    错误报告
 						<div>
