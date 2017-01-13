@@ -32,7 +32,11 @@ function p($target,$bool=true){
 }
 //将换行分隔的字符串,用$quote引起来,再用split分隔
 function s($str,$split=',',$quote="'"){
-    $arr = preg_split('/\s*[,\s]\s*/', trim($str), -1, PREG_SPLIT_NO_EMPTY);
+	if(!is_array($str)){
+    	$arr = preg_split('/\s*[,\s]\s*/', trim($str), -1, PREG_SPLIT_NO_EMPTY);
+	}else{
+		$arr = $str;
+	}
     return $quote.implode($quote.$split.$quote,$arr).$quote;
 }
 
